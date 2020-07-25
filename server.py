@@ -1,9 +1,9 @@
 # Web Application - Xiaotian Wang - 07.25.2020
 # listening on localhost:5000
+# Response to POST request with one argument 'string_to_cut'
+# Return a JSON object {”return_string“” : “EVERYTHIRDLETTER”}
 
 from flask import Flask
-from flask import render_template as rt
-from flask import jsonify
 from flask import request
 import json as jn
 import math
@@ -49,6 +49,7 @@ def cut_string_Alphanumeric(input_string):
     return_string = ""
     index = 0
     count = 1
+    # only retain every 3rd alphanumeric characters
     while (index < len(input_string)):
         if input_string[index].isalnum():
             if (count%3 == 0):
@@ -59,14 +60,16 @@ def cut_string_Alphanumeric(input_string):
     return jn.dumps({'return_string':return_string}, indent = 4)
 
 # function that extract every third letter from input string
+# if N = number of characters
+# then the runtime will be O(N/3)
 # e.g. cut_string_everyThirdLetter("abcedfg") returns "cf"
 # special cases:
 #   1. empty string
-#   2. length of string may cause overflow, veryfy before access to string[index]
-#   3. input string can contains any letters but not \
+#   2. length of string may cause overflow, verify before access to string[index]
+#   3. input string can contains any characters but not back slash and space - working on it
 def cut_string(input_string):
     return_string = ""
-    num_letters = math.floor(len(input_string)/3)
+    num_letters = math.floor(len(input_string)/3) # retain every 3rd character; calculat how many
     for n in range(num_letters):
         index = (n+1)*3
         if (index <= len(input_string)):
