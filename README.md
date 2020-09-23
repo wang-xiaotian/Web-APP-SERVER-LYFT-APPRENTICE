@@ -4,7 +4,7 @@
 <!-- Title Image Ends-->
 
 <!-- Title Starts-->
-# Web Application Using Python and Flask
+# Web Application with Python and Flask
 > The client sends a JSON object “string_to_cut”; <br /> 
 > The server parses that JSON object, extract every third alphanumeric letter and return anther JSON object "return_string" to client.<br />  
 <!-- Title Ends-->
